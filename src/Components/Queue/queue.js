@@ -61,7 +61,7 @@ const Queue = () => {
 
     <div style={{ position: 'relative', height: '100vh', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
       <h3>Queue</h3>
-      <div style={{ display: 'flex', top: '20%', position: 'absolute' }} ref={queueRef}>
+      <div style={{ display: 'flex', top: '30%', position: 'absolute' }} ref={queueRef}>
         {queue.map((item, index) => (
           <div
             key={item.id}

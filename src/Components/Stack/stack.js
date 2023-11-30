@@ -31,13 +31,13 @@ const Stack = () => {
   useEffect(() => {
     // Animate the last added element
     if (stackRef.current && stack.length > 0) {
-      const lastElement = stackRef.current.children[stack.length - 1];
+      const lastElement = stackRef.current.children[stack.length -1 ];
 
       gsap.fromTo(
         lastElement,
         { opacity: 0, y: -50 }, // Initial state
-        { opacity: 1, y: 0, duration: 0.5, ease: 'power3.out' } // Final state
-      );
+        { opacity: 1, y: 0, duration: 0.75, ease: 'power3.in' } // Final state
+      )
     }
   }, [stack]);
 
@@ -49,14 +49,14 @@ const Stack = () => {
       gsap.fromTo(
         removedElement,
         { opacity: 1, y: 0 }, // Initial state
-        { opacity: 0, y: -500, duration: 2, ease: 'power3.in' } // Final state with ease-out
+        { opacity: 0, x: 0, duration: 0.75, ease: 'power3.out' } // Final state with ease-out
       );
     }
   }, [stack]);
 
   return (
     <div style={{ position: 'relative', height: '100vh' }}>
-      <h3>Stack</h3>
+      <h3>Queue</h3>
       <div
         style={{
           display: 'flex',
