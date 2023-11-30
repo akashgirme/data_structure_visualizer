@@ -103,7 +103,7 @@ const Stack = () => {
         <div style={{ marginTop: '20px' }}>
           <strong>Top of Stack:</strong> {stack.length > 0 ? stack[stack.length - 1].value : 'Empty'}
           <br />
-          <strong>Index of Top:</strong> {stack.length > 0 ? stack.length : 'N/A'}
+          <strong>Index of Top:</strong> {stack.length > 0 ? stack.length - 1: 'N/A'}
         </div>
       </div>
       <div style={{ display: 'flex', alignItems: 'center', marginTop: '20px'}}>
