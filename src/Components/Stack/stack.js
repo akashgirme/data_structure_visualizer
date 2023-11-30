@@ -35,7 +35,7 @@ const Stack = () => {
 
       gsap.fromTo(
         lastElement,
-        { opacity: 0, y: -50 }, // Initial state
+        { opacity: 0, y: -70 }, // Initial state
         { opacity: 1, y: 0, duration: 0.75, ease: 'power3.in' } // Final state
       )
     }
@@ -44,7 +44,7 @@ const Stack = () => {
   useEffect(() => {
     // Animate the removed element with ease-out
     if (stackRef.current && stack.length > 0) {
-      const removedElement = stackRef.current.children[stack.length];
+      const removedElement = stackRef.current.children[stack.length ];
 
       gsap.fromTo(
         removedElement,

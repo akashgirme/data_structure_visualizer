@@ -14,8 +14,7 @@ import QuickSort from './Components/Sorting/Quick Sort/quickSort';
 
 function App() {
   return (
-    <div>
-      
+    <div className='App'>
       <BrowserRouter>
         <Navbar/>
         <Routes>
