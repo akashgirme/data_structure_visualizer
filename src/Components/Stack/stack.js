@@ -1,24 +1,38 @@
+// Stack.js
 import React, { useState, useRef, useEffect } from 'react';
 import gsap from 'gsap';
+import './stack.css';
+import { Container, Row, Col, Button, Form } from 'react-bootstrap'
 
 const Stack = () => {
   const [stack, setStack] = useState([]);
   const [inputValue, setInputValue] = useState('');
+  const [stackSize, setStackSize] = useState(5);
+  const [isOverflow, setIsOverflow] = useState(false);
   const inputRef = useRef(null);
   const stackRef = useRef(null);
 
   const pushToStack = () => {
     if (!inputValue.trim()) {
-      return; // Don't push to stack if the input is empty
+      return;
     }
 
-    setStack((prevStack) => [...prevStack, { id: prevStack.length + 1, value: inputValue }]);
-    setInputValue(''); // Clear the input field
+    if (stack.length >= stackSize) {
+      setIsOverflow(true);
+      return;
+    }
+
+    setStack((prevStack) => [
+      ...prevStack,
+      { id: prevStack.length + 1, value: inputValue },
+    ]);
+    setInputValue('');
+    setIsOverflow(false);
   };
 
   const popFromStack = () => {
     if (stack.length === 0) {
-      return; // Don't pop from an empty stack
+      return;
     }
 
     setStack((prevStack) => {
@@ -26,102 +40,105 @@ const Stack = () => {
       copy.pop();
       return copy;
     });
+    setIsOverflow(false);
+  };
+
+  const handleStackSizeChange = (e) => {
+    const newSize = parseInt(e.target.value, 10);
+    setStackSize(newSize);
+    setIsOverflow(false);
   };
 
   useEffect(() => {
-    // Animate the last added element
     if (stackRef.current && stack.length > 0) {
-      const lastElement = stackRef.current.children[stack.length -1 ];
+      const lastElement = stackRef.current.children[stack.length - 1];
 
       gsap.fromTo(
         lastElement,
-        { opacity: 0, y: -70 }, // Initial state
-        { opacity: 1, y: 0, duration: 0.75, ease: 'power3.in' } // Final state
-      )
+        { opacity: 0, y: -70 },
+        { opacity: 1, y: 0, duration: 0.75, ease: 'power3.in' }
+      );
     }
   }, [stack]);
 
   useEffect(() => {
-    // Animate the removed element with ease-out
     if (stackRef.current && stack.length > 0) {
-      const removedElement = stackRef.current.children[stack.length ];
+      const removedElement = stackRef.current.children[stack.length];
 
       gsap.fromTo(
         removedElement,
-        { opacity: 1, y: 0 }, // Initial state
-        { opacity: 0, x: 0, duration: 0.75, ease: 'power3.out' } // Final state with ease-out
+        { opacity: 1, y: 0 },
+        { opacity: 0, x: 0, duration: 0.75, ease: 'power3.out' }
       );
     }
   }, [stack]);
 
   return (
-    <div style={{ position: 'relative', height: '100vh' }}>
-      <h3>Queue</h3>
-      <div
-        style={{
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          position: 'absolute',
-          top: '50%',
-          left: '50%',
-          transform: 'translate(-50%, -50%)',
-        }}
-      >
-        <div style={{ display: 'flex', flexDirection: 'column-reverse'}} ref={stackRef}>
-          {stack.map((item, index) => (
-            <div
-              key={item.id}
-              style={{
-                width: '200px',
-                height: '50px',
-                borderRadius: '10px',
-                backgroundColor: 'green',
-                margin: '2px 0',
-                display: 'flex',
-                justifyContent: 'center',
-                alignItems: 'center',
-                color: 'white',
-                position: 'relative',
-              }}
-            >
-              {item.value}
-              <div
-                style={{
-                  position: 'absolute',
-                  top: '50%', // Position to the bottom of the square
-                  right: '-30px',
-                  transform: 'translateY(-50%)',
-                  color: 'black',
-                }}
-              >
-                {`${index}`}
-              </div>
+<Container fluid className='mt-2'>
+{/*<div className="stack-container h-100"> */}
+    <Row >
+        <Col sm md lg="2" className='d-flex justify-content-end align-items-center'>
+            <h4>Stack</h4>
+        </Col>
+        <Col className='d-flex flex-row justify-content-center align-items-center'>
+            <div className='stack-controls d-flex flex-row h-auto justify-content-around align-items-center'>
+                <div className='d-flex align-items-center'>
+                    <label>
+                        Stack Size:
+                    </label>
+                    <Form.Range
+                        type="range"
+                        min="5"
+                        max="15"
+                        value={stackSize}
+                        onChange={handleStackSizeChange}
+                    />
+                    {stackSize}
+                </div> 
+                <div className='d-flex align-items-center'>
+                    <label>Enter Value:</label>
+                    <Form.Control
+                            type="number"
+                            value={inputValue}
+                            onChange={(e) => setInputValue(e.target.value)}
+                            ref={inputRef}
+                    />
+                    
+                    <Button className='mx-1' variant="secondary" onClick={pushToStack}>Push</Button>
+                </div>
+                <Button variant="secondary" onClick={popFromStack} disabled={stack.length === 0}>
+                    Pop from Stack
+                </Button>
             </div>
-          ))}
-        </div>
-        <div style={{ marginTop: '20px' }}>
-          <strong>Top of Stack:</strong> {stack.length > 0 ? stack[stack.length - 1].value : 'Empty'}
-          <br />
-          <strong>Index of Top:</strong> {stack.length > 0 ? stack.length - 1: 'N/A'}
-        </div>
-      </div>
-      <div style={{ display: 'flex', alignItems: 'center', marginTop: '20px'}}>
-          <label>
-            Enter Value:
-            <input
-              type="number"
-              value={inputValue}
-              onChange={(e) => setInputValue(e.target.value)}
-              ref={inputRef}
-            />
-          </label>
-          <button onClick={pushToStack}>Push to Stack</button>
-          <button onClick={popFromStack} disabled={stack.length === 0}>
-            Pop from Stack
-          </button>
-        </div>
-    </div>
+       
+        </Col>
+    </Row>
+    <Row>
+        <Col className='d-flex flex-row justify-content-center'>
+            <div className='stack-content d-flex flex-column justify-content-end align-items-center'>
+                <div className="stack-elements" ref={stackRef}>
+                    {stack.map((item, index) => (
+                        <div key={item.id} className="stack-element">
+                            {item.value}
+                            <div className="index-indicator">{`${index}`}</div>
+                        </div>
+                    ))}
+                </div>
+            </div>
+        </Col>
+        
+    </Row>
+    <Row className='d-flex justify-content-center align-items-center'>
+        <Col className='d-flex flex-column justify-content-center align-items-center' >
+            <div>{isOverflow && <div className="overflow-message">Stack Overflow! Stack is full.</div>}</div>
+                <div className="d-flex stack-info justify-content-around align-items-center">
+                    <div className='p-1'><strong>Top of Stack:</strong> {stack.length > 0 ? stack[stack.length - 1].value : 'Empty'}</div>
+                    <div className='p-1'><strong>Index of Top:</strong> {stack.length > 0 ? stack.length - 1 : 'N/A'}</div>
+                </div>
+        </Col>
+    </Row>
+{/* </div> */}
+</Container>
   );
 };
 

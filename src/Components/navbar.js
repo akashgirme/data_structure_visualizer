@@ -8,7 +8,7 @@ function navbar() {
           <div style={{display:'flex', width:'80%', height:'100%', alignItems:'center', borderBottom:'1px grey solid'}}>
             <Link to="/">Back</Link>
             <div style={{display: 'flex', width:'100%', justifyContent:'center'}}>
-                <h3>Data Structure Visualization</h3>
+                <h5>Data Structure Visualization</h5>
             </div>
           </div>
         </nav>

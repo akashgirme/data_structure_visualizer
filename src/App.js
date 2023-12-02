@@ -1,5 +1,7 @@
 import { Routes, Route, Link, BrowserRouter} from 'react-router-dom'
 //import './App.css'
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.bundle.min';
 import ArrayAnimation from './Components/Array/Array';
 import Stack from './Components/Stack/stack';
 import Queue from './Components/Queue/queue';

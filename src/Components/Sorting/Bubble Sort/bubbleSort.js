@@ -93,7 +93,7 @@ const BubbleSort = () => {
 
   return (
     <div style={{ display: 'flex', justifyContent: 'center', flexDirection: 'column', alignItems: 'center' }}>
-      <h3>Bubble Sort</h3>
+      <h4>Bubble Sort</h4>
       <div>
         <label>
           Array Size:
@@ -136,7 +136,7 @@ const BubbleSort = () => {
                 color: 'white',
               }}
             >
-               {/*{value} */}
+               {value}
             </div>
           ))}
         </div>

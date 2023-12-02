@@ -1,6 +1,7 @@
-// Queue.js
 import React, { useState, useRef, useEffect } from 'react';
 import gsap from 'gsap';
+import { Container, Row, Col, Form, Button} from 'react-bootstrap';
+import './queue.css'; // Import the CSS file
 
 const Queue = () => {
   const [queue, setQueue] = useState([]);
@@ -55,65 +56,61 @@ const Queue = () => {
       );
     }
   }, [queue, lastOperation]);
-  
 
   return (
+    <Container>
+        <Row className='my-2'>
+            <Col sm md lg="2" className='d-flex justify-content-end align-items-center'>
+                <h5>Queue</h5>
+            </Col>
+            <Col className='d-flex justify-content-center align-items-center'>
+                <div className="d-flex align-items-center">
+                    <label>
+                        Enter Value:
+                    </label>
 
-    <div style={{ position: 'relative', height: '100vh', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-      <h3>Stack</h3>
-      <div style={{ display: 'flex', top: '20%', position: 'absolute' }} ref={queueRef}>
-        {queue.map((item, index) => (
-          <div
-            key={item.id}
-            style={{
-              width: '50px',
-              height: '200px',
-              borderRadius: '10px',
-              backgroundColor: 'blue',
-              margin: '0px 2px',
-              display: 'flex',
-              justifyContent: 'center',
-              alignItems: 'center',
-              color: 'white',
-              position: 'relative',
-            }}
-          >
-            {item.value}
-            <div
-              style={{
-                position: 'absolute',
-                display: 'none',
-                top: '50%', // Position to the bottom of the square
-                transform: 'translateY(-50%)',
-                color: 'black',
-              }}
-            >
-              {`${index}`}
+                    <Form.Control
+                        type="number"
+                        value={inputValue}
+                        onChange={(e) => setInputValue(e.target.value)}
+                        ref={inputRef}
+                    />
+                
+                    <Button className='mx-1' variant='secondary' onClick={enqueue}>Enqueue</Button>
+                    <Button className='mx-1' variant='secondary' onClick={dequeue} disabled={queue.length === 0}>
+                        Dequeue
+                    </Button>
+                </div>
+            </Col>
+        </Row>
+        <Row>
+            <Col className='d-flex my-4 justify-content-center align-items-center'>
+                <div className="queue" ref={queueRef}>
+                {queue.map((item, index) => (
+                <div
+                    key={item.id}
+                    className="queue-item"
+                >
+                    {item.value}
+                    <div className="index-label">
+                    {`${index}`}
+                    </div>
+                </div>
+                ))}
             </div>
-          </div>
-        ))}
-      </div>
-      <div style={{ marginTop: '20px' }}>
-        <strong>Front of Queue:</strong> {queue.length > 0 ? queue[0].value : 'Empty'}
-        <br />
-        <strong>Rear of Queue:</strong> {queue.length > 0 ? queue[queue.length - 1].value : 'Empty'}
-      </div>
-      <div style={{ display: 'flex', alignItems: 'center', marginTop: '20px' }}>
-        <label>
-          Enter Value:
-          <input
-            type="number"
-            value={inputValue}
-            onChange={(e) => setInputValue(e.target.value)}
-            ref={inputRef}
-          />
-        </label>
-        <button onClick={enqueue}>Enqueue</button>
-        <button onClick={dequeue} disabled={queue.length === 0}>
-          Dequeue
-        </button>
-      </div>
-    </div>
+       
+            </Col>
+        </Row>
+        <Row className='d-flex justify-content-center align-items-center'>
+            <Col className='d-flex justify-content-center align-items-center' >
+                <div className="d-flex queue-info justify-content-around align-items-center">
+                    <div className='p-1'><strong>Front of Queue:</strong> {queue.length > 0 ? queue[0].value : 'Empty'}</div>
+                    <div className='p-1'><strong>Rear of Queue:</strong> {queue.length > 0 ? queue[queue.length - 1].value : 'Empty'}</div>
+                </div>
+            </Col>
+        </Row>
+      
+    </Container>
   );
 };
 
