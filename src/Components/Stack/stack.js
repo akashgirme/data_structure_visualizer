@@ -86,9 +86,9 @@ const Stack = () => {
         <Grid item lg={2} display='flex' justifyContent='end'>
             <Typography variant='h5'>Stack</Typography>
         </Grid>
-        <Grid item lg={9} className='d-flex flex-row justify-content-center align-items-center'>
-            <Box display='flex' justifyContent='between' alignItems='center' className='stack-controls d-flex flex-row h-auto justify-content-around align-items-center'>
-                <Box className='d-flex align-items-center' sx={{width:'350px'}}>
+        <Grid item lg={8} display="flex" justifyContent='center' alignItems='center'>
+            <Box display='flex' justifyContent='between' alignItems='center'>
+                <Box mr='1rem' display='flex' alignItems='center' sx={{width:'350px'}}>
                     <label>
                         Stack Size:
                     </label>
@@ -104,7 +104,7 @@ const Stack = () => {
                     />
                     {stackSize}
                 </Box> 
-                <Box className='d-flex align-items-center'>
+                <Box display='flex' alignItems='center'>
                     <TextField
                             type="number"
                             label="Enter Element"
@@ -124,7 +124,7 @@ const Stack = () => {
         </Grid>
       </Grid>
     <Grid item>
-        <Col className='d-flex flex-row justify-content-center'>
+        <Grid display='flex' justifyContent='center'>
             <div className='stack-content d-flex flex-column justify-content-end align-items-center'>
                 <div className="stack-elements" ref={stackRef}>
                     {stack.map((item, index) => (
@@ -135,17 +135,19 @@ const Stack = () => {
                     ))}
                 </div>
             </div>
-        </Col>
+        </Grid>
         
     </Grid>
-    <Grid className='d-flex justify-content-center align-items-center'>
-        <Col className='d-flex flex-column justify-content-center align-items-center' >
-            <div>{isOverflow && <div className="overflow-message">Stack Overflow! Stack is full.</div>}</div>
-                <div className="d-flex stack-info justify-content-around align-items-center">
-                    <Typography variant='h5' p='1'><strong>Top of Stack:</strong> {stack.length > 0 ? stack[stack.length - 1].value : 'Empty'}</Typography>
-                    <Typography variant='h5' p='1'><strong>Index of Top:</strong> {stack.length > 0 ? stack.length - 1 : 'N/A'}</Typography>
-                </div>
-        </Col>
+    <Grid item lg={12}>
+      <Grid mt='1.5rem' display='flex' justifyContent='center' alignItems='center'>
+          <Box display='flex' flexDirection='column' justifyContent='center' alignItems='center' sx={{width:'70%'}}>
+              <Box>{isOverflow && <div className="overflow-message">Stack Overflow! Stack is full.</div>}</Box>
+              <Box className="d-flex stack-info justify-content-around align-items-center">
+                <Typography variant='h6' p='1'><strong>Top of Stack:</strong> {stack.length > 0 ? stack[stack.length - 1].value : 'Empty'}</Typography>
+                <Typography variant='h6' p='1'><strong>Index of Top:</strong> {stack.length > 0 ? stack.length - 1 : 'N/A'}</Typography>
+              </Box>
+          </Box>
+      </Grid>
     </Grid>
   </Grid>
   );
