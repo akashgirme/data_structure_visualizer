@@ -1,5 +1,10 @@
 import React, { useState, useRef, useEffect } from 'react';
 import gsap from 'gsap';
+import TextField from '@mui/material/TextField';
+import Box from '@mui/material/Box';
+import Button from '@mui/material/Button'
+import Typography from '@mui/material/Typography';
+import Grid from '@mui/material/Grid'
 
 const LinkedList = () => {
   const [list, setList] = useState([]);
@@ -68,35 +73,30 @@ const LinkedList = () => {
   };
 
   return (
-    <div style={{ display: 'flex', position: 'relative', height: '100vh', justifyContent:'center' }}>
-      <h3>LinkedList</h3>
-      <div
-        style={{
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          position: 'absolute',
-          top: '20%',
-          left: '50%',
-          transform: 'translate(-50%, -50%)',
-        }}
-      >
-        <div>
-          <label>
-            Enter Value:
-            <input
+    <Grid display='flex' flexDirection='column'>
+      <Grid container mt='1rem'>
+        <Grid item lg={2} display='flex' justifyContent='end'>
+          <Typography variant='h5'>LinkedList</Typography>
+        </Grid>
+        <Grid item lg={8} display='flex' justifyContent='center'>
+          <Box display='flex'>
+            <TextField
               type="text"
+              label="Enter Element"
               value={inputValue}
+              size='small'
               onChange={(e) => setInputValue(e.target.value)}
               ref={inputRef}
             />
-          </label>
-          <button onClick={insertAtEnd}>Insert</button>
-          <button onClick={deleteFromEnd} disabled={list.length === 0}>
-            Delete
-          </button>
-        </div>
-        <div style={{ marginTop: '50px', display: 'flex' }} ref={listRef}>
+            <Box ml='1rem'><Button variant='contained' onClick={insertAtEnd}>Insert</Button></Box>
+            <Box ml='2rem'><Button variant='contained' onClick={deleteFromEnd} disabled={list.length === 0}>
+              Delete
+            </Button></Box>
+          </Box>
+        </Grid>
+      </Grid>
+      <Grid container display='flex' justifyContent='center'>
+        <Box display='flex' mt='10rem' ref={listRef}>
           {list.map((node, index) => (
             <div
               key={node.id}
@@ -141,9 +141,9 @@ const LinkedList = () => {
               </div>
             </div>
           ))}
-        </div>
-      </div>
-    </div>
+        </Box>
+      </Grid>
+  </Grid>
   );
 };
 

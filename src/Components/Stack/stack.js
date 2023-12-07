@@ -2,7 +2,14 @@
 import React, { useState, useRef, useEffect } from 'react';
 import gsap from 'gsap';
 import './stack.css';
-import { Container, Row, Col, Button, Form } from 'react-bootstrap'
+import Slider from '@mui/material/Slider';
+import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
+import TextField from '@mui/material/TextField';
+import Grid from '@mui/material/Grid';
+import { Container, Row, Col, Form } from 'react-bootstrap'
+import { Typography } from '@mui/material';
+
 
 const Stack = () => {
   const [stack, setStack] = useState([]);
@@ -74,46 +81,49 @@ const Stack = () => {
   }, [stack]);
 
   return (
-<Container fluid className='mt-2'>
-{/*<div className="stack-container h-100"> */}
-    <Row >
-        <Col sm md lg="2" className='d-flex justify-content-end align-items-center'>
-            <h4>Stack</h4>
-        </Col>
-        <Col className='d-flex flex-row justify-content-center align-items-center'>
-            <div className='stack-controls d-flex flex-row h-auto justify-content-around align-items-center'>
-                <div className='d-flex align-items-center'>
+  <Grid container rowSpacing={2} display='flex' flexDirection='column'>
+      <Grid conatiner columnSpacing={2} mt='1rem' display='flex' alignItems='center'>
+        <Grid item lg={2} display='flex' justifyContent='end'>
+            <Typography variant='h5'>Stack</Typography>
+        </Grid>
+        <Grid item lg={9} className='d-flex flex-row justify-content-center align-items-center'>
+            <Box display='flex' justifyContent='between' alignItems='center' className='stack-controls d-flex flex-row h-auto justify-content-around align-items-center'>
+                <Box className='d-flex align-items-center' sx={{width:'350px'}}>
                     <label>
                         Stack Size:
                     </label>
-                    <Form.Range
+                    <Slider
                         type="range"
-                        min="5"
-                        max="15"
+                        min={5}
+                        max={15}
+                        step={1}
+                        label={stackSize}
                         value={stackSize}
+                        valueLabelDisplay='auto'
                         onChange={handleStackSizeChange}
                     />
                     {stackSize}
-                </div> 
-                <div className='d-flex align-items-center'>
-                    <label>Enter Value:</label>
-                    <Form.Control
+                </Box> 
+                <Box className='d-flex align-items-center'>
+                    <TextField
                             type="number"
+                            label="Enter Element"
+                            size='small'
                             value={inputValue}
                             onChange={(e) => setInputValue(e.target.value)}
                             ref={inputRef}
                     />
-                    
-                    <Button className='mx-1' variant="secondary" onClick={pushToStack}>Push</Button>
-                </div>
-                <Button variant="secondary" onClick={popFromStack} disabled={stack.length === 0}>
-                    Pop from Stack
-                </Button>
-            </div>
+                    <Box ml='0.5rem'><Button className='mx-1' variant="contained" onClick={pushToStack}>Push</Button></Box>
+                    <Box ml='2rem'><Button variant="contained" onClick={popFromStack} disabled={stack.length === 0}>
+                      Pop from Stack
+                    </Button></Box>
+                </Box>
+                
+            </Box>
        
-        </Col>
-    </Row>
-    <Row>
+        </Grid>
+      </Grid>
+    <Grid item>
         <Col className='d-flex flex-row justify-content-center'>
             <div className='stack-content d-flex flex-column justify-content-end align-items-center'>
                 <div className="stack-elements" ref={stackRef}>
@@ -127,18 +137,17 @@ const Stack = () => {
             </div>
         </Col>
         
-    </Row>
-    <Row className='d-flex justify-content-center align-items-center'>
+    </Grid>
+    <Grid className='d-flex justify-content-center align-items-center'>
         <Col className='d-flex flex-column justify-content-center align-items-center' >
             <div>{isOverflow && <div className="overflow-message">Stack Overflow! Stack is full.</div>}</div>
                 <div className="d-flex stack-info justify-content-around align-items-center">
-                    <div className='p-1'><strong>Top of Stack:</strong> {stack.length > 0 ? stack[stack.length - 1].value : 'Empty'}</div>
-                    <div className='p-1'><strong>Index of Top:</strong> {stack.length > 0 ? stack.length - 1 : 'N/A'}</div>
+                    <Typography variant='h5' p='1'><strong>Top of Stack:</strong> {stack.length > 0 ? stack[stack.length - 1].value : 'Empty'}</Typography>
+                    <Typography variant='h5' p='1'><strong>Index of Top:</strong> {stack.length > 0 ? stack.length - 1 : 'N/A'}</Typography>
                 </div>
         </Col>
-    </Row>
-{/* </div> */}
-</Container>
+    </Grid>
+  </Grid>
   );
 };
 

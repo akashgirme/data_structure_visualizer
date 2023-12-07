@@ -1,7 +1,11 @@
 import React, { useState, useRef, useEffect } from 'react';
 import gsap from 'gsap';
-import { Container, Row, Col, Form, Button} from 'react-bootstrap';
+import Grid from '@mui/material/Grid';
+import Box from '@mui/material/Box';
+import TextField from '@mui/material/TextField';
+import Button from '@mui/material/Button';
 import './queue.css'; // Import the CSS file
+import { Typography } from '@mui/material';
 
 const Queue = () => {
   const [queue, setQueue] = useState([]);
@@ -58,34 +62,32 @@ const Queue = () => {
   }, [queue, lastOperation]);
 
   return (
-    <Container>
-        <Row className='my-2'>
-            <Col sm md lg="2" className='d-flex justify-content-end align-items-center'>
-                <h5>Queue</h5>
-            </Col>
-            <Col className='d-flex justify-content-center align-items-center'>
-                <div className="d-flex align-items-center">
-                    <label>
-                        Enter Value:
-                    </label>
-
-                    <Form.Control
+    <Grid container rowSpacing={2}>
+        <Grid container columnSpacing={2} mt='2rem'>
+            <Grid item lg={2} display='flex' justifyContent='flex-end' alignItems='center'>
+                <Typography variant='h5'>Queue</Typography>
+            </Grid>
+            <Grid item lg={9} display='flex' justifyContent='center' alignItems='center'>
+                <Box display='flex' alignItems='center'>
+                    <TextField
                         type="number"
+                        label='Enter Element'
                         value={inputValue}
+                        size='small'
                         onChange={(e) => setInputValue(e.target.value)}
                         ref={inputRef}
                     />
                 
-                    <Button className='mx-1' variant='secondary' onClick={enqueue}>Enqueue</Button>
-                    <Button className='mx-1' variant='secondary' onClick={dequeue} disabled={queue.length === 0}>
+                    <Box ml='0.5rem'><Button variant='contained' onClick={enqueue}>Enqueue</Button></Box>
+                    <Box ml='2rem'><Button variant='contained' onClick={dequeue} disabled={queue.length === 0}>
                         Dequeue
-                    </Button>
-                </div>
-            </Col>
-        </Row>
-        <Row>
-            <Col className='d-flex my-4 justify-content-center align-items-center'>
-                <div className="queue" ref={queueRef}>
+                    </Button></Box>
+                </Box>
+            </Grid>
+        </Grid>
+        <Grid container mt='2rem' display='flex' justifyContent='center'>
+            <Grid lg={11} display='flex' my='3rem' justifyContent='center' alignItems='center'>
+              <Box display='flex' justifyContent='center' className="queue" ref={queueRef}>
                 {queue.map((item, index) => (
                 <div
                     key={item.id}
@@ -97,20 +99,19 @@ const Queue = () => {
                     </div>
                 </div>
                 ))}
-            </div>
-       
-            </Col>
-        </Row>
-        <Row className='d-flex justify-content-center align-items-center'>
-            <Col className='d-flex justify-content-center align-items-center' >
-                <div className="d-flex queue-info justify-content-around align-items-center">
-                    <div className='p-1'><strong>Front of Queue:</strong> {queue.length > 0 ? queue[0].value : 'Empty'}</div>
-                    <div className='p-1'><strong>Rear of Queue:</strong> {queue.length > 0 ? queue[queue.length - 1].value : 'Empty'}</div>
-                </div>
-            </Col>
-        </Row>
+              </Box>
+            </Grid>
+        </Grid>
+        <Grid container display='flex' justifyContent='center' alignItems='center'>
+          <Grid item lg={4}>
+            <Box display='flex' justifyContent='space-around' alignItems='center'>
+              <Typography variant='h5' display='flex'><strong>Front of Queue:</strong> {queue.length > 0 ? queue[0].value : 'Empty'}</Typography>
+              <Typography variant='h5' display='flex'><strong>Rear of Queue:</strong> {queue.length > 0 ? queue[queue.length - 1].value : 'Empty'}</Typography>
+            </Box>
+          </Grid>
+        </Grid>
       
-    </Container>
+    </Grid>
   );
 };
 

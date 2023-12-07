@@ -1,0 +1,62 @@
+.array-animation-container{
+    display:flex;
+    flex-direction: column;
+    position: relative;
+    height:100vh;
+}
+
+.controls{
+    width:90%;
+}
+
+.array-display{
+        display: flex;
+        flex-direction: column;
+        margin-top: 50px;
+        position: relative;
+        
+}
+
+.array-border-top{
+        
+        top: 0;
+        left: 0;
+        width: 100%;
+        border-bottom: 1px solid black;
+}
+
+
+.array-index{
+    position: absolute;
+    bottom: -30px;
+  /*  left: 50%; */
+     transform: translateX(-50%);
+    color: black;
+}
+
+
+.array-border-bottom{
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        top: 75px;
+        width: 100%;
+        border-top: 1px solid black;
+}
+
+.array-element{
+        display: flex;
+      /*  position: relative; */
+        width: 75px;
+        height: 75px;
+        background-color: blue;
+        margin: 0 1px;
+        justify-content: center;
+        align-items: center;
+        color: white;
+}
+
+
+.array-container{
+    display: flex;
+}
