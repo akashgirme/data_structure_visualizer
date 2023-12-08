@@ -83,10 +83,10 @@ const Stack = () => {
   return (
   <Grid container rowSpacing={2} display='flex' flexDirection='column'>
       <Grid conatiner columnSpacing={2} mt='1rem' display='flex' alignItems='center'>
-        <Grid item lg={2} display='flex' justifyContent='end'>
+        <Grid item md lg={2} display='flex' justifyContent='end'>
             <Typography variant='h5'>Stack</Typography>
         </Grid>
-        <Grid item lg={8} display="flex" justifyContent='center' alignItems='center'>
+        <Grid item md lg={8} display="flex" justifyContent='center' alignItems='center'>
             <Box display='flex' justifyContent='between' alignItems='center'>
                 <Box mr='1rem' display='flex' alignItems='center' sx={{width:'350px'}}>
                     <label>
@@ -138,7 +138,7 @@ const Stack = () => {
         </Grid>
         
     </Grid>
-    <Grid item lg={12}>
+    <Grid item md lg={12}>
       <Grid mt='1.5rem' display='flex' justifyContent='center' alignItems='center'>
           <Box display='flex' flexDirection='column' justifyContent='center' alignItems='center' sx={{width:'70%'}}>
               <Box>{isOverflow && <div className="overflow-message">Stack Overflow! Stack is full.</div>}</Box>
