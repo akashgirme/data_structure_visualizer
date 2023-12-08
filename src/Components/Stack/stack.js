@@ -83,12 +83,12 @@ const Stack = () => {
   return (
   <Grid container rowSpacing={2} display='flex' flexDirection='column'>
       <Grid conatiner columnSpacing={2} mt='1rem' display='flex' alignItems='center'>
-        <Grid item md lg={2} display='flex' justifyContent='end'>
+        <Grid item md={1} lg={2} display='flex' justifyContent='end'>
             <Typography variant='h5'>Stack</Typography>
         </Grid>
-        <Grid item md lg={8} display="flex" justifyContent='center' alignItems='center'>
+        <Grid item md={10} lg={8} display="flex" justifyContent='center' alignItems='center'>
             <Box display='flex' justifyContent='between' alignItems='center'>
-                <Box mr='1rem' display='flex' alignItems='center' sx={{width:'350px'}}>
+                <Box mr='1rem' display='flex' alignItems='center' sx={{width:'300px'}}>
                     <label>
                         Stack Size:
                     </label>
@@ -113,14 +113,12 @@ const Stack = () => {
                             onChange={(e) => setInputValue(e.target.value)}
                             ref={inputRef}
                     />
-                    <Box ml='0.5rem'><Button className='mx-1' variant="contained" onClick={pushToStack}>Push</Button></Box>
-                    <Box ml='2rem'><Button variant="contained" onClick={popFromStack} disabled={stack.length === 0}>
+                    <Box ml='0.5rem'><Button variant="contained" onClick={pushToStack}>Push</Button></Box>
+                    <Box ml='1.5rem'><Button variant="contained" onClick={popFromStack} disabled={stack.length === 0}>
                       Pop from Stack
                     </Button></Box>
-                </Box>
-                
+                </Box>  
             </Box>
-       
         </Grid>
       </Grid>
     <Grid item>
@@ -138,9 +136,9 @@ const Stack = () => {
         </Grid>
         
     </Grid>
-    <Grid item md lg={12}>
-      <Grid mt='1.5rem' display='flex' justifyContent='center' alignItems='center'>
-          <Box display='flex' flexDirection='column' justifyContent='center' alignItems='center' sx={{width:'70%'}}>
+    <Grid item md={12} lg={12}>
+      <Grid mt='1.5rem' sx={{widht:'100%'}} display='flex' justifyContent='center' alignItems='center'>
+          <Box display='flex' flexDirection='column' justifyContent='center' alignItems='center' sx={{width:'100%'}}>
               <Box>{isOverflow && <div className="overflow-message">Stack Overflow! Stack is full.</div>}</Box>
               <Box className="d-flex stack-info justify-content-around align-items-center">
                 <Typography variant='h6' p='1'><strong>Top of Stack:</strong> {stack.length > 0 ? stack[stack.length - 1].value : 'Empty'}</Typography>
