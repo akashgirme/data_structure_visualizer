@@ -1,5 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react';
 import gsap from 'gsap';
+import Grid from '@mui/material/Grid';
+import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
+import Slider from '@mui/material/Slider';
+import Typography from '@mui/material/Typography';
 
 const QuickSort = () => {
   const [arraySize, setArraySize] = useState(10);
@@ -118,6 +123,8 @@ const QuickSort = () => {
     });
   };
 
+  /*
+
   return (
     <div style={{ display: 'flex', justifyContent: 'center', flexDirection: 'column', alignItems: 'center' }}>
       <h3>Quick Sort</h3>
@@ -163,12 +170,97 @@ const QuickSort = () => {
                 color: 'white',
               }}
             >
-              {/*{value} */}
+              
             </div>
           ))}
         </div>
       </div>
     </div>
+  );
+   */
+  return (
+    <Grid container display='flex' justifyContent='center' alignItems='center'>
+      <Grid item md={10} lg={10} my='1rem' display='flex' justifyContent='center' alignItems='center'>
+        <Grid item md={2} lg={2}>
+          <Box><Typography variant='h5'>Quick Sort</Typography></Box>
+        </Grid>
+        <Grid item md={10} lg={10} display='flex' alignItems='center' justifyContent='space-around'>
+            <Box>
+            <label>
+              <Typography variant='subtitle1'>
+                Array Size:
+              </Typography>
+            </label>
+            </Box>
+            <Box>
+              <Slider sx={{width:'300px'}}
+                min={5}
+                max={25}
+                valueLabelDisplay='auto'
+                value={arraySize}
+                onChange={(e) => setArraySize(parseInt(e.target.value))}
+              />
+            </Box>
+            <Box>
+                <label>
+                  <Typography variant='subtitle1'>
+                  {arraySize}
+                  </Typography>
+                </label>
+            </Box>
+            <Button variant='contained' onClick={generateRandomArray}>Generate Random Array</Button>
+            <Box>
+              <label>
+                <Typography variant='subtitle1'>
+                  Animation Speed:
+                </Typography>
+                </label>
+            </Box>
+            <Box>
+              <Slider sx={{width:'200px'}}
+                min={100}
+                max={5000}
+                step={100}
+                valueLabelDisplay='auto'
+                value={animationSpeed}
+                onChange={(e) => setAnimationSpeed(parseInt(e.target.value))}
+              />
+            </Box>
+            <Box>
+              <label>
+                <Typography variant='subtitle1'>
+                  {animationSpeed} ms
+                </Typography>
+              </label>
+            </Box>
+          </Grid>
+        </Grid>
+        <Grid item md={5} lg={5} my='1rem' display='flex' alignItems='center' justifyContent='center'>
+          <Box mx='1rem'><Button variant='contained' onClick={sort}>Sort</Button></Box>
+          <Box mx='1rem'><Button variant='outlined' onClick={resetColors}>Reset</Button></Box>
+        </Grid>
+        <Grid item md={12} lg={12}>
+          <Box style={{ display: 'flex', marginTop: '30px', justifyContent: 'center' }} ref={arrayRef}>
+            {array.map((value, index) => (
+              <Box
+                key={index}
+                style={{
+                  width: `${900 / arraySize}px`,
+                  height: `${value * 10}px`,
+                  backgroundColor: 'lightblue',
+                  margin: '0 2px',
+                  display: 'flex',
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  color: 'white', 
+                }}
+              >
+              {/*  {value}   */}
+              </Box>
+            ))}
+          </Box>
+        </Grid>
+      </Grid>
   );
 };
 

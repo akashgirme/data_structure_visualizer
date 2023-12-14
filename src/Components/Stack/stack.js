@@ -86,14 +86,15 @@ const Stack = () => {
         <Grid item md={1} lg={2} display='flex' justifyContent='end'>
             <Typography variant='h5'>Stack</Typography>
         </Grid>
-        <Grid item md={10} lg={8} display="flex" justifyContent='center' alignItems='center'>
+        <Grid item md={10} lg={9} my='1rem' display="flex" justifyContent='center' alignItems='center'>
             <Box display='flex' justifyContent='between' alignItems='center'>
-                <Box mr='1rem' display='flex' alignItems='center' sx={{width:'300px'}}>
+                <Box mr='1rem' display='flex' alignItems='center' sx={{width:'44%'}}>
                     <label>
+                      <Typography variant='subtitle1'>
                         Stack Size:
+                      </Typography>
                     </label>
-                    <Slider
-                        type="range"
+                    <Slider sx={{width:'300px'}}
                         min={5}
                         max={15}
                         step={1}
@@ -102,7 +103,11 @@ const Stack = () => {
                         valueLabelDisplay='auto'
                         onChange={handleStackSizeChange}
                     />
-                    {stackSize}
+                    <label>
+                      <Typography variant='subtitle1'>
+                        {stackSize}
+                      </Typography>
+                    </label>
                 </Box> 
                 <Box display='flex' alignItems='center'>
                     <TextField
@@ -114,7 +119,7 @@ const Stack = () => {
                             ref={inputRef}
                     />
                     <Box ml='0.5rem'><Button variant="contained" onClick={pushToStack}>Push</Button></Box>
-                    <Box ml='1.5rem'><Button variant="contained" onClick={popFromStack} disabled={stack.length === 0}>
+                    <Box ml='1.5rem'><Button variant="outlined" onClick={popFromStack} disabled={stack.length === 0}>
                       Pop from Stack
                     </Button></Box>
                 </Box>  
