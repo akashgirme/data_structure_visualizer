@@ -1,5 +1,11 @@
 import React, { useState, useEffect, useRef } from 'react';
 import gsap from 'gsap';
+import Grid from '@mui/material/Grid';
+import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
+import Slider from '@mui/material/Slider';
+import Typography from '@mui/material/Typography';
+
 
 const BubbleSort = () => {
   const [arraySize, setArraySize] = useState(10);
@@ -49,6 +55,9 @@ const BubbleSort = () => {
             duration: animationSpeed / 1000,
           });
 
+
+
+
           gsap.to(arrayRef.current.children[j + 1], {
             height: `${arrayCopy[j + 1] * 10}px`,
             backgroundColor: 'green',
@@ -87,61 +96,93 @@ const BubbleSort = () => {
   const resetColors = () => {
     gsap.to(arrayRef.current.children, {
       backgroundColor: 'lightblue',
-      duration: animationSpeed / 1000,
+      duration:0,
     });
   };
 
   return (
-    <div style={{ display: 'flex', justifyContent: 'center', flexDirection: 'column', alignItems: 'center' }}>
-      <h4>Bubble Sort</h4>
-      <div>
-        <label>
-          Array Size:
-          <input
-            type="range"
-            min="1"
-            max="25"
-            value={arraySize}
-            onChange={(e) => setArraySize(parseInt(e.target.value))}
-          />
-          {arraySize}
-        </label>
-        <button onClick={generateRandomArray}>Generate Random Array</button>
-        <button onClick={bubbleSort}>Sort</button>
-        <button onClick={resetColors}>Reset</button>
-        <label>
-          Animation Speed:
-          <input
-            type="range"
-            min="100"
-            max="5000"
-            step="100"
-            value={animationSpeed}
-            onChange={(e) => setAnimationSpeed(parseInt(e.target.value))}
-          />
-          {animationSpeed} ms
-        </label>
-        <div style={{ display: 'flex', marginTop: '30px', justifyContent: 'center' }} ref={arrayRef}>
-          {array.map((value, index) => (
-            <div
-              key={index}
-              style={{
-                width: `${700 / arraySize}px`,
-                height: `${value * 10}px`,
-                backgroundColor: 'lightblue',
-                margin: '0 2px',
-                display: 'flex',
-                justifyContent: 'center',
-                alignItems: 'center',
-                color: 'white',
-              }}
-            >
-               {value}
-            </div>
-          ))}
-        </div>
-      </div>
-    </div>
+    <Grid container display='flex' justifyContent='center' alignItems='center'>
+      <Grid item md={10} lg={10} my='1rem' display='flex' justifyContent='center' alignItems='center'>
+        <Grid item md={2} lg={2}>
+          <Box><Typography variant='h5'>Bubble Sort</Typography></Box>
+        </Grid>
+        <Grid item md={10} lg={10} display='flex' alignItems='center' justifyContent='space-around'>
+            <Box>
+            <label>
+              <Typography variant='subtitle1'>
+                Array Size:
+              </Typography>
+            </label>
+            </Box>
+            <Box>
+              <Slider sx={{width:'300px'}}
+                min={5}
+                max={25}
+                valueLabelDisplay='auto'
+                value={arraySize}
+                onChange={(e) => setArraySize(parseInt(e.target.value))}
+              />
+            </Box>
+            <Box>
+                <label>
+                  <Typography variant='subtitle1'>
+                  {arraySize}
+                  </Typography>
+                </label>
+            </Box>
+            <Button variant='contained' onClick={generateRandomArray}>Generate Random Array</Button>
+            <Box>
+              <label>
+                <Typography variant='subtitle1'>
+                  Animation Speed:
+                </Typography>
+                </label>
+            </Box>
+            <Box>
+              <Slider sx={{width:'200px'}}
+                min={100}
+                max={5000}
+                step={100}
+                valueLabelDisplay='auto'
+                value={animationSpeed}
+                onChange={(e) => setAnimationSpeed(parseInt(e.target.value))}
+              />
+            </Box>
+            <Box>
+              <label>
+                <Typography variant='subtitle1'>
+                  {animationSpeed} ms
+                </Typography>
+              </label>
+            </Box>
+          </Grid>
+        </Grid>
+        <Grid item md={5} lg={5} my='1rem' display='flex' alignItems='center' justifyContent='center'>
+          <Box mx='1rem'><Button variant='contained' onClick={bubbleSort}>Sort</Button></Box>
+          <Box mx='1rem'><Button variant='outlined' onClick={resetColors}>Reset</Button></Box>
+        </Grid>
+        <Grid item md={12} lg={12}>
+          <Box style={{ display: 'flex', marginTop: '30px', justifyContent: 'center' }} ref={arrayRef}>
+            {array.map((value, index) => (
+              <Box
+                key={index}
+                style={{
+                  width: `${900 / arraySize}px`,
+                  height: `${value * 10}px`,
+                  backgroundColor: 'lightblue',
+                  margin: '0 2px',
+                  display: 'flex',
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  color: 'white', 
+                }}
+              >
+              {/*  {value}   */}
+              </Box>
+            ))}
+          </Box>
+        </Grid>
+      </Grid>
   );
 };
 

@@ -50,7 +50,7 @@ const LinearSearch = () => {
 
       gsap.to(arrayRef.current.children[i], {
         backgroundColor: 'lightblue',
-        duration: animationSpeed / 1000,
+        duration: animationSpeed / 2000 - animationSpeed,
       });
     }
 
@@ -60,7 +60,7 @@ const LinearSearch = () => {
   const resetColors = () => {
     gsap.to(arrayRef.current.children, {
       backgroundColor: 'lightblue',
-      duration: animationSpeed / 1000,
+      duration:0,
     });
     setTargetIndex('N/A');
   };
@@ -151,13 +151,13 @@ const LinearSearch = () => {
       <Grid item md={12} lg={12} display='flex' flexDirection='column' alignItems='center' justifyContent='center'>  
         <Box mt='5rem' display='flex' ref={arrayRef}>
           {array.map((value, index) => (
-            <div
+            <Box
               key={index}
               style={{
                 width:'60px',
                 height: '60px',
                 backgroundColor:
-                  index === targetIndex
+                  index == targetIndex
                     ? 'green'
                     : 'lightblue',
                 margin: '0 2px',
@@ -168,7 +168,7 @@ const LinearSearch = () => {
               }}
             >
               {value}
-            </div>
+            </Box>
           ))}
         </Box>
         <Box  my='2rem'><Typography variant='h5'>Index of Search Key: {targetIndex}</Typography></Box>
