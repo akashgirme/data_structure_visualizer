@@ -35,7 +35,7 @@ const Home = () => {
                           height='100' Width='100'
                           image={array}
                           alt='Array'/>
-                        <Typography varient="h6">Array</Typography>
+                        <Typography varient='h6'>Array</Typography>
                       </CardContent>
                     </Card>
                   </Link>
