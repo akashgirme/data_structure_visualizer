@@ -127,7 +127,7 @@ const LinkedList = () => {
                   <>
                     <div
                       style={{
-                        height: '2px',
+                        height: '4px',
                         width: '30px',
                         backgroundColor: 'black',
                         position: 'absolute',
