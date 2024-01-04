@@ -36,7 +36,7 @@ const Home = () => {
                     justifyContent="center"
                     alignItems="center"
                   >
-                    <Typography sx={{ fontWeight: "700" }} variant="h3">
+                    <Typography sx={{ fontWeight: "600" }} variant="h3">
                       Bubble Sort
                     </Typography>
                     <Typography variant="h6">Bubble Sort</Typography>
@@ -48,7 +48,7 @@ const Home = () => {
               <Link to="/quickSort">
                 <Card maxWidth="5rem">
                   <CardContent>
-                    <Typography variant="h3" sx={{ fontWeight: "700" }}>
+                    <Typography variant="h3" sx={{ fontWeight: "600" }}>
                       Quick Sort
                     </Typography>
                     <Typography variant="h6">Quick Sort</Typography>
@@ -65,7 +65,7 @@ const Home = () => {
                     justifyContent="center"
                     alignItems="center"
                   >
-                    <Typography sx={{ fontWeight: "700" }} variant="h3">
+                    <Typography sx={{ fontWeight: "600" }} variant="h3">
                       Selection Sort
                     </Typography>
                     <Typography variant="h6">Selection Sort</Typography>
@@ -82,7 +82,7 @@ const Home = () => {
                     justifyContent="center"
                     alignItems="center"
                   >
-                    <Typography sx={{ fontWeight: "700" }} variant="h3">
+                    <Typography sx={{ fontWeight: "600" }} variant="h3">
                       Merge Sort
                     </Typography>
                     <Typography variant="h6">Merge Sort</Typography>
@@ -188,7 +188,7 @@ const Home = () => {
                     justifyContent="center"
                     alignItems="center"
                   >
-                    <Typography variant="h3" sx={{ fontWeight: "700" }}>
+                    <Typography variant="h3" sx={{ fontWeight: "600" }}>
                       Linear Search
                     </Typography>
                     <Typography variant="h6">Linear Search</Typography>
@@ -200,7 +200,7 @@ const Home = () => {
               <Link to="/BinarySearch">
                 <Card maxWidth="5rem">
                   <CardContent>
-                    <Typography variant="h3" sx={{ fontWeight: "700" }}>
+                    <Typography variant="h3" sx={{ fontWeight: "600" }}>
                       Binary Search
                     </Typography>
                     <Typography variant="h6">Binary Search</Typography>

@@ -19,7 +19,7 @@ const MergeSort = () => {
   const generateRandomArray = () => {
     const newArray = Array.from(
       { length: arraySize },
-      () => Math.floor(Math.random() * 50) + 1
+      () => Math.floor(Math.random() * 50) + 1,
     );
     setArray(newArray);
   };
