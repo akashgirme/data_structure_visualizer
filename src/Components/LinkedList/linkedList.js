@@ -1,14 +1,14 @@
-import React, { useState, useRef, useEffect } from 'react';
-import gsap from 'gsap';
-import TextField from '@mui/material/TextField';
-import Box from '@mui/material/Box';
-import Button from '@mui/material/Button'
-import Typography from '@mui/material/Typography';
-import Grid from '@mui/material/Grid'
+import React, { useState, useRef, useEffect } from "react";
+import gsap from "gsap";
+import TextField from "@mui/material/TextField";
+import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
+import Typography from "@mui/material/Typography";
+import Grid from "@mui/material/Grid";
 
 const LinkedList = () => {
   const [list, setList] = useState([]);
-  const [inputValue, setInputValue] = useState('');
+  const [inputValue, setInputValue] = useState("");
   const inputRef = useRef(null);
   const listRef = useRef(null);
 
@@ -25,7 +25,7 @@ const LinkedList = () => {
       return copy;
     });
 
-    setInputValue(''); // Clear the input field
+    setInputValue(""); // Clear the input field
   };
 
   const deleteFromEnd = () => {
@@ -53,8 +53,8 @@ const LinkedList = () => {
           opacity: 1,
           y: 0,
           duration: 0.5,
-          ease: 'power3.out',
-        }
+          ease: "power3.out",
+        },
       );
     }
   };
@@ -67,73 +67,83 @@ const LinkedList = () => {
       gsap.fromTo(
         removedNodeElement,
         { opacity: 1, y: 0 },
-        { opacity: 0, y: -50, duration: 0.5, ease: 'power3.out' }
+        { opacity: 0, y: -50, duration: 0.5, ease: "power3.out" },
       );
     }
   };
 
   return (
-    <Grid display='flex' flexDirection='column'>
-      <Grid container mt='1rem'>
-        <Grid item lg={2} display='flex' justifyContent='end'>
-          <Typography variant='h5'>LinkedList</Typography>
+    <Grid display="flex" flexDirection="column">
+      <Grid container mt="1rem">
+        <Grid item lg={2} display="flex" justifyContent="end">
+          <Typography variant="h5">LinkedList</Typography>
         </Grid>
-        <Grid item lg={8} display='flex' justifyContent='center'>
-          <Box display='flex'>
+        <Grid item lg={8} display="flex" justifyContent="center">
+          <Box display="flex">
             <TextField
               type="text"
               label="Enter Element"
               value={inputValue}
-              size='small'
+              size="small"
               onChange={(e) => setInputValue(e.target.value)}
               ref={inputRef}
             />
-            <Box ml='1rem'><Button variant='contained' onClick={insertAtEnd}>Insert</Button></Box>
-            <Box ml='2rem'><Button variant='contained' onClick={deleteFromEnd} disabled={list.length === 0}>
-              Delete
-            </Button></Box>
+            <Box ml="1rem">
+              <Button variant="contained" onClick={insertAtEnd}>
+                Insert
+              </Button>
+            </Box>
+            <Box ml="2rem">
+              <Button
+                variant="contained"
+                onClick={deleteFromEnd}
+                disabled={list.length === 0}
+              >
+                Delete
+              </Button>
+            </Box>
           </Box>
         </Grid>
       </Grid>
-      <Grid container display='flex' justifyContent='center'>
-        <Box display='flex' mt='10rem' ref={listRef}>
+      <Grid container display="flex" justifyContent="center">
+        <Box display="flex" mt="10rem" ref={listRef}>
           {list.map((node, index) => (
             <div
               key={node.id}
               style={{
-                position: 'relative',
-                width: '150px',
-                height: '80px',
-                backgroundColor: 'green',
-                margin: '0 10px',
-                display: 'flex',
-                flexDirection: 'column',
-                justifyContent: 'center',
-                alignItems: 'center',
-                color: 'white',
+                position: "relative",
+                width: "150px",
+                height: "80px",
+                backgroundColor: "green",
+                margin: "0 10px",
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "center",
+                alignItems: "center",
+                color: "white",
               }}
             >
               <div>{node.value}</div>
               <div
                 style={{
-                  position: 'absolute',
-                  top: '50%',
-                  left: '100%',
-                  transform: 'translate(-50%, -50%)',
-                  color: 'black',
+                  position: "absolute",
+                  top: "50%",
+                  left: "100%",
+                  transform: "translate(-50%, -50%)",
+                  color: "black",
                 }}
               >
                 {index < list.length - 1 && (
                   <>
                     <div
                       style={{
-                        height: '4px',
-                        width: '30px',
-                        backgroundColor: 'black',
-                        position: 'absolute',
-                        top: '50%',
-                        left: '20px',
-                        transform: 'translate(-100%, -50%)',
+                        height: "4px",
+                        width: "30px",
+                        backgroundColor: "black",
+                        position: "absolute",
+                        top: "50%",
+                        left: "20px",
+                        transform: "translate(-100%, -50%)",
                       }}
                     />
                   </>
@@ -143,7 +153,7 @@ const LinkedList = () => {
           ))}
         </Box>
       </Grid>
-  </Grid>
+    </Grid>
   );
 };
 
