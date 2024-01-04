@@ -8,12 +8,14 @@ import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Grid";
 
-const LinearSearch = () => {
+const BinarySearch = () => {
   const [arraySize, setArraySize] = useState(10);
   const [array, setArray] = useState([]);
   const [searchValue, setSearchValue] = useState("");
-  const [targetIndex, setTargetIndex] = useState("N/A");
+  const [targetIndex, setTargetIndex] = useState(-1);
   const [animationSpeed, setAnimationSpeed] = useState(500); // Default speed: 500ms
+  const [left, setLeft] = useState(null);
+  const [right, setRight] = useState(null);
   const arrayRef = useRef(null);
 
   useEffect(() => {
@@ -25,34 +27,74 @@ const LinearSearch = () => {
       { length: arraySize },
       () => Math.floor(Math.random() * 50) + 1,
     );
-    setArray(newArray);
+    setArray(newArray.sort((a, b) => a - b));
     setSearchValue("");
     setTargetIndex("N/A");
+    setLeft(null);
+    setRight(null);
   };
 
-  const linearSearch = async () => {
+  const binarySearch = async () => {
     resetColors();
 
-    let foundIndex = "N/A";
+    let leftIndex = 0;
+    let rightIndex = array.length - 1;
+    let foundIndex = -1;
 
-    for (let i = 0; i < array.length; i++) {
-      gsap.to(arrayRef.current.children[i], {
+    while (leftIndex <= rightIndex) {
+      const mid = Math.floor((leftIndex + rightIndex) / 2);
+
+      setLeft(leftIndex);
+      setRight(rightIndex);
+      // Highlight Left
+      gsap.to(arrayRef.current.children[leftIndex], {
+        backgroundColor: "orange",
+        duration: animationSpeed / 1000,
+      });
+
+      //Highlight Right
+      gsap.to(arrayRef.current.children[rightIndex], {
+        backgroundColor: "orange",
+        duration: animationSpeed / 1000,
+      });
+
+      // Highlight mid (current middle element)
+      gsap.to(arrayRef.current.children[mid], {
         backgroundColor: "blue",
         duration: animationSpeed / 1000,
       });
 
       await new Promise((resolve) => setTimeout(resolve, animationSpeed));
 
-      if (array[i] === parseInt(searchValue)) {
-        foundIndex = i;
+      // Check if the middle element is the search value
+      if (array[mid] === parseInt(searchValue)) {
+        foundIndex = mid;
+        gsap.to(arrayRef.current.children[foundIndex], {
+          backgroundColor: "green",
+          duration: 0,
+        });
+
         setTargetIndex(foundIndex);
         return;
-      }
+      } else if (array[mid] < parseInt(searchValue)) {
+        // Highlight left
+        gsap.to(arrayRef.current.children[leftIndex], {
+          backgroundColor: "orange",
+          duration: animationSpeed / 1000,
+        });
 
-      gsap.to(arrayRef.current.children[i], {
-        backgroundColor: "lightblue",
-        duration: animationSpeed / 2000 - animationSpeed,
-      });
+        leftIndex = mid + 1;
+        setLeft(leftIndex);
+      } else {
+        // Highlight right
+        gsap.to(arrayRef.current.children[rightIndex], {
+          backgroundColor: "orange",
+          duration: animationSpeed / 1000,
+        });
+
+        rightIndex = mid - 1;
+        setRight(rightIndex);
+      }
     }
 
     setTargetIndex(foundIndex);
@@ -63,7 +105,13 @@ const LinearSearch = () => {
       backgroundColor: "lightblue",
       duration: 0,
     });
+  };
+
+  const resetSearch = () => {
     setTargetIndex("N/A");
+    setLeft(null);
+    setRight(null);
+    resetColors();
   };
 
   return (
@@ -95,7 +143,7 @@ const LinearSearch = () => {
           justifyContent="center"
         >
           <Box>
-            <Typography variant="h5">Linear Search</Typography>
+            <Typography variant="h5">Binary Search</Typography>
           </Box>
         </Grid>
         <Grid
@@ -121,7 +169,7 @@ const LinearSearch = () => {
                 />
               </Box>
               <Box>
-                <Button variant="contained" onClick={linearSearch}>
+                <Button variant="contained" onClick={binarySearch}>
                   Search
                 </Button>
               </Box>
@@ -222,7 +270,12 @@ const LinearSearch = () => {
               style={{
                 width: "60px",
                 height: "60px",
-                backgroundColor: index == targetIndex ? "green" : "lightblue",
+                backgroundColor:
+                  index === targetIndex
+                    ? "green"
+                    : index === left || index === right
+                      ? "orange"
+                      : "lightblue",
                 margin: "0 2px",
                 display: "flex",
                 justifyContent: "center",
@@ -230,7 +283,18 @@ const LinearSearch = () => {
                 color: "white",
               }}
             >
-              {value}
+              <Box>
+                <Typography variant="body1">{value}</Typography>
+              </Box>
+              {index === targetIndex ? (
+                <Box
+                  style={{ position: "absolute", top: "-20px", color: "black" }}
+                >
+                  <Typography variant="subtitle1">Found!</Typography>
+                </Box>
+              ) : (
+                <></>
+              )}
             </Box>
           ))}
         </Box>
@@ -244,4 +308,4 @@ const LinearSearch = () => {
   );
 };
 
-export default LinearSearch;
+export default BinarySearch;

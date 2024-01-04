@@ -56,6 +56,40 @@ const Home = () => {
                 </Card>
               </Link>
             </Grid>
+            <Grid item lg={3}>
+              <Link to="/selectionSort">
+                <Card variant="outlined" maxWidth="5rem">
+                  <CardContent
+                    display="flex"
+                    flexDirection="column"
+                    justifyContent="center"
+                    alignItems="center"
+                  >
+                    <Typography sx={{ fontWeight: "700" }} variant="h3">
+                      Selection Sort
+                    </Typography>
+                    <Typography variant="h6">Selection Sort</Typography>
+                  </CardContent>
+                </Card>
+              </Link>
+            </Grid>
+            <Grid item lg={3}>
+              <Link to="/mergeSort">
+                <Card variant="outlined" maxWidth="5rem">
+                  <CardContent
+                    display="flex"
+                    flexDirection="column"
+                    justifyContent="center"
+                    alignItems="center"
+                  >
+                    <Typography sx={{ fontWeight: "700" }} variant="h3">
+                      Merge Sort
+                    </Typography>
+                    <Typography variant="h6">Merge Sort</Typography>
+                  </CardContent>
+                </Card>
+              </Link>
+            </Grid>
           </Grid>
         </Box>
 

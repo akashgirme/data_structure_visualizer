@@ -5,12 +5,14 @@ import ArrayAnimation from "./Components/Array/Array";
 import Stack from "./Components/Stack/stack";
 import Queue from "./Components/Queue/queue";
 import Home from "./Home";
-import BinarySearch from "./Components/Searching/Binary Search/binarySearch";
-import LinearSearch from "./Components/Searching/Linear Search/linearSearch";
-import LinkedList from "./Components/LinkedList/linkedList";
+import BinarySearch from "./Components/Searching/Binary Search/binary-search";
+import LinearSearch from "./Components/Searching/Linear Search/linear-search";
+import LinkedList from "./Components/LinkedList/linked-list";
 import Navbar from "./Components/navbar";
-import BubbleSort from "./Components/Sorting/Bubble Sort/bubbleSort";
-import QuickSort from "./Components/Sorting/Quick Sort/quickSort";
+import BubbleSort from "./Components/Sorting/Bubble Sort/bubble-sort";
+import QuickSort from "./Components/Sorting/Quick Sort/quick-sort";
+import MergeSort from "./Components/Sorting/merge-sort";
+import SelectionSort from "./Components/Sorting/selection-sort";
 
 function App() {
   return (
@@ -27,6 +29,8 @@ function App() {
           <Route path="/linkedList" element={<LinkedList />} />
           <Route path="/bubbleSort" element={<BubbleSort />} />
           <Route path="/quickSort" element={<QuickSort />} />
+          <Route path="/selectionSort" element={<SelectionSort />} />
+          <Route path="/mergeSort" element={<MergeSort />} />
         </Routes>
       </BrowserRouter>
     </div>
