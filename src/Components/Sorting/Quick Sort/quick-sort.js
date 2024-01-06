@@ -74,6 +74,8 @@ const QuickSort = () => {
         });
 
         await new Promise((resolve) => setTimeout(resolve, animationSpeed));
+
+        setArray([...arr]);
       }
 
       // Reset background color
@@ -109,7 +111,12 @@ const QuickSort = () => {
       duration: animationSpeed / 1000,
     });
 
+    
+    setArray([...arr]);
+
     return i + 1;
+
+
   };
 
   const sort = async () => {
@@ -122,63 +129,9 @@ const QuickSort = () => {
       backgroundColor: "lightblue",
       duration: animationSpeed / 1000,
     });
+    generateRandomArray();
   };
 
-  /*
-
-  return (
-    <div style={{ display: 'flex', justifyContent: 'center', flexDirection: 'column', alignItems: 'center' }}>
-      <h3>Quick Sort</h3>
-      <div>
-        <label>
-          Array Size:
-          <input
-            type="range"
-            min="1"
-            max="25"
-            value={arraySize}
-            onChange={(e) => setArraySize(parseInt(e.target.value))}
-          />
-          {arraySize}
-        </label>
-        <button onClick={generateRandomArray}>Generate Random Array</button>
-        <button onClick={sort}>Sort</button>
-        <button onClick={resetColors}>Reset</button>
-        <label>
-          Animation Speed:
-          <input
-            type="range"
-            min="100"
-            max="5000"
-            step="100"
-            value={animationSpeed}
-            onChange={(e) => setAnimationSpeed(parseInt(e.target.value))}
-          />
-          {animationSpeed} ms
-        </label>
-        <div style={{ display: 'flex', marginTop: '30px', justifyContent: 'center' }} ref={arrayRef}>
-          {array.map((value, index) => (
-            <div
-              key={index}
-              style={{
-                width: `${700 / arraySize}px`,
-                height: `${value * 10}px`,
-                backgroundColor: 'lightblue',
-                margin: '0 2px',
-                display: 'flex',
-                justifyContent: 'center',
-                alignItems: 'center',
-                color: 'white',
-              }}
-            >
-              
-            </div>
-          ))}
-        </div>
-      </div>
-    </div>
-  );
-   */
   return (
     <Grid container display="flex" justifyContent="center" alignItems="center">
       <Grid
@@ -292,7 +245,7 @@ const QuickSort = () => {
                 color: "white",
               }}
             >
-              {/*  {value}   */}
+              {value}
             </Box>
           ))}
         </Box>

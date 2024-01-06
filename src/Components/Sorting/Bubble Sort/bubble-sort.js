@@ -24,11 +24,10 @@ const BubbleSort = () => {
     setArray(newArray);
   };
 
-  const bubbleSort = async () => {
-    const arrayCopy = [...array];
+  const bubbleSort = async () =>{
 
-    for (let i = 0; i < arrayCopy.length - 1; i++) {
-      for (let j = 0; j < arrayCopy.length - i - 1; j++) {
+    for (let i = 0; i < array.length - 1; i++) {
+      for (let j = 0; j < array.length - i - 1; j++) {
         // Highlight elements being compared
         gsap.to(arrayRef.current.children[j], {
           backgroundColor: "blue",
@@ -43,26 +42,30 @@ const BubbleSort = () => {
         await new Promise((resolve) => setTimeout(resolve, animationSpeed));
 
         // Swap if needed
-        if (arrayCopy[j] > arrayCopy[j + 1]) {
-          const temp = arrayCopy[j];
-          arrayCopy[j] = arrayCopy[j + 1];
-          arrayCopy[j + 1] = temp;
+        if (array[j] > array[j + 1]) {
+          const temp = array[j];
+          array[j] = array[j + 1];
+          array[j + 1] = temp;
+
+          
 
           // Animate swap
           gsap.to(arrayRef.current.children[j], {
-            height: `${arrayCopy[j] * 10}px`,
+            height: `${array[j] * 10}px`,
             backgroundColor: "green",
             duration: animationSpeed / 1000,
           });
 
           gsap.to(arrayRef.current.children[j + 1], {
-            height: `${arrayCopy[j + 1] * 10}px`,
+            height: `${array[j + 1] * 10}px`,
             backgroundColor: "green",
             duration: animationSpeed / 1000,
           });
 
           await new Promise((resolve) => setTimeout(resolve, animationSpeed));
+          setArray([...array]);
         }
+
 
         // Reset background color
         gsap.to(arrayRef.current.children[j], {
@@ -77,7 +80,7 @@ const BubbleSort = () => {
       }
 
       // Set the last element in its final sorted position
-      gsap.to(arrayRef.current.children[arrayCopy.length - i - 1], {
+      gsap.to(arrayRef.current.children[array.length - i - 1], {
         backgroundColor: "green",
         duration: animationSpeed / 1000,
       });
@@ -88,6 +91,8 @@ const BubbleSort = () => {
       backgroundColor: "green",
       duration: animationSpeed / 1000,
     });
+
+    
   };
 
   const resetColors = () => {
@@ -95,6 +100,7 @@ const BubbleSort = () => {
       backgroundColor: "lightblue",
       duration: 0,
     });
+    generateRandomArray();
   };
 
   return (
@@ -210,7 +216,7 @@ const BubbleSort = () => {
                 color: "white",
               }}
             >
-              {/*  {value}   */}
+              {value}
             </Box>
           ))}
         </Box>
