@@ -30,7 +30,7 @@ function navbar() {
           <div
             style={{ display: "flex", width: "100%", justifyContent: "center" }}
           >
-            <Typography variant="h5">Data Structure Visualization</Typography>
+            <Typography variant="h5" sx={{fontWeight:'500'}}>Data Structure Visualization</Typography>
           </div>
         </div>
       </nav>

@@ -21,15 +21,11 @@ const Home = () => {
         alignItems: "center",
       }}
     >
-      <Grid item sm={11} md={11} lg={11} xl={11} display='flex' flexDirection='column' justifyContent='center'>
-        <Box  m='2rem' display='flex' flexDirection='column'
-        alignItems='center' justifyContent='center'><Typography variant='h1' sx={{fontWeight:'700' }}
-       
-        >LOGIC IN MOTION</Typography>
-       
+       <Box  m='2rem' display='flex' flexDirection='column'
+        alignItems='center' justifyContent='center'>
   
-      <marquee scrollamount="15" infinite>
-        <Typography variant='h4' sx={{letterSpacing:'5px'}}>
+      <marquee scrollamount="12" infinite>
+        <Typography variant='h6' sx={{letterSpacing:'2px'}}>
           ELEVATE DATA STRUCTURES WITH DYNAMIC VISUALS  &lt;/&gt;  ELEVATE DATA STRUCTURES WITH DYNAMIC VISUALS
                 ELEVATE DATA STRUCTURES WITH DYNAMIC VISUALS  &lt;/&gt;  ELEVATE DATA STRUCTURES WITH DYNAMIC VISUALS
 
@@ -38,7 +34,7 @@ const Home = () => {
     </marquee>
 
 </Box>
-
+      <Grid item sm={11} md={10} lg={10} xl={10} display='flex' flexDirection='column' justifyContent='center'>
         <Box m="1rem">
           <Box>
             <Typography variant="h5">Sorting Techniques</Typography>
