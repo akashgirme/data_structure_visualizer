@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import { Container } from "react-bootstrap";
 import { Typography } from "@mui/material";
 import Box from "@mui/material/Box";
 import Card from "@mui/material/Card";
@@ -12,6 +11,7 @@ import stack from "./Assets/stack.png";
 import queue from "./Assets/queue.png";
 
 const Home = () => {
+
   return (
     <Grid container
       style={{
@@ -22,11 +22,23 @@ const Home = () => {
       }}
     >
       <Grid item sm={12} md={12} lg={11} xl={11} display='flex' flexDirection='column' justifyContent='center'>
-      {/* <Box mt="1rem" style={{ width: "80%" }}> */}
-        <Box  m='2rem' display='flex'
-        alignItems='center' justifyContent='center'><Typography variant='h2' sx={{fontWeight:'700' }}
+        <Box  m='2rem' display='flex' flexDirection='column'
+        alignItems='center' justifyContent='center'><Typography variant='h1' sx={{fontWeight:'700' }}
        
-        >Visualize, Understand, Learn</Typography></Box>
+        >LOGIC IN MOTION</Typography>
+       
+  
+      <marquee scrollamount="15" infinite>
+        <Typography variant='h4' sx={{letterSpacing:'5px'}}>
+          ELEVATE DATA STRUCTURES WITH DYNAMIC VISUALS  &lt;/&gt;  ELEVATE DATA STRUCTURES WITH DYNAMIC VISUALS
+                ELEVATE DATA STRUCTURES WITH DYNAMIC VISUALS  &lt;/&gt;  ELEVATE DATA STRUCTURES WITH DYNAMIC VISUALS
+
+    </Typography>
+    
+    </marquee>
+
+</Box>
+
         <Box m="1rem">
           <Box>
             <Typography variant="h5">Sorting Techniques</Typography>
@@ -248,7 +260,7 @@ const Home = () => {
           </Grid>
         </Box>
 
-        <Box mt='1.5rem'>
+        <Box mt='1.5rem' mb='5rem'>
           <Box>
             <Typography variant="h5">Searching Techniques</Typography>
           </Box>
@@ -299,7 +311,6 @@ const Home = () => {
             </Grid>
           </Grid>
         </Box>
-      {/* </Box> */}
       </Grid>
     </Grid>
   );
