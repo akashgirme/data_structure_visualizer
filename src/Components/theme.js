@@ -10,10 +10,23 @@ const Theme = createTheme({
       fontSize:108,
       letterSpacing:20,
 
-      '@media (min-width:960px) and (max-width:1280px)': {
+      '@media (min-width:720px) and (max-width:1024px)': {
+        fontSize:84,
+        letterSpacing:15,
+      },
+
+
+      '@media (min-width:1024px) and (max-width:1280px)': {
         fontSize:96,
         letterSpacing:15,
       },
+
+      '@media (min-width:1280px) and (max-width:1440px)': {
+        fontSize:102,
+        letterSpacing:15,
+      },
+
+
 
       '@media (max-width:600px)': {
         fontSize: 32,
