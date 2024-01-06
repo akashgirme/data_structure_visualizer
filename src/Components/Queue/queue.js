@@ -147,11 +147,11 @@ const Queue = () => {
       >
         <Grid item lg={4}>
           <Box display="flex" justifyContent="space-around" alignItems="center">
-            <Typography variant="h5" display="flex">
+            <Typography variant="h6" display="flex">
               <strong>Front of Queue:</strong>{" "}
               {queue.length > 0 ? queue[0].value : "Empty"}
             </Typography>
-            <Typography variant="h5" display="flex">
+            <Typography variant="h6" display="flex">
               <strong>Rear of Queue:</strong>{" "}
               {queue.length > 0 ? queue[queue.length - 1].value : "Empty"}
             </Typography>
