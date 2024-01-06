@@ -7,7 +7,6 @@ import Box from "@mui/material/Box";
 import "./Array.css";
 import Slider from "@mui/material/Slider";
 import { Typography } from "@mui/material";
-import { ThemeProvider } from "react-bootstrap";
 
 const ArrayAnimation = () => {
   const [arraySize, setArraySize] = React.useState(10); // Default array size

@@ -13,7 +13,7 @@ import queue from "./Assets/queue.png";
 
 const Home = () => {
   return (
-    <Container
+    <Grid container
       style={{
         display: "flex",
         flexDirection: "column",
@@ -21,14 +21,19 @@ const Home = () => {
         alignItems: "center",
       }}
     >
-      <Box mt="1rem" style={{ width: "80%" }}>
+      <Grid item sm={12} md={12} lg={11} xl={11} display='flex' flexDirection='column' justifyContent='center'>
+      {/* <Box mt="1rem" style={{ width: "80%" }}> */}
+        <Box  m='2rem' display='flex'
+        alignItems='center' justifyContent='center'><Typography variant='h2' sx={{fontWeight:'700' }}
+       
+        >Visualize, Understand, Learn</Typography></Box>
         <Box m="1rem">
           <Box>
             <Typography variant="h5">Sorting Techniques</Typography>
           </Box>
-          <Grid container spacing={2} mt="0.1rem">
+          <Grid container spacing={2} mt="0.1rem" display='flex' alignItems='center' justifyContent='center'>
             <Grid item lg={3}>
-              <Link to="/bubbleSort">
+              <Link to="/bubbleSort" style={{textDecoration:'none'}}>
                 <Card variant="outlined" maxWidth="5rem">
                   <CardContent
                     display="flex"
@@ -36,45 +41,72 @@ const Home = () => {
                     justifyContent="center"
                     alignItems="center"
                   >
-                    <Typography sx={{ fontWeight: "600" }} variant="h3">
+                    <Typography sx={{ fontWeight: "500" }} variant="h3"
+                     display="flex"
+                     justifyContent="center"
+                     alignItems="center"
+                     textAlign='center'
+                     mb='0.5rem'
+                     >
                       Bubble Sort
                     </Typography>
-                    <Typography variant="h6">Bubble Sort</Typography>
+                    <Typography 
+                    
+                    variant="h6"
+                     display="flex"
+                     justifyContent="center"
+                     alignItems="center">Bubble Sort</Typography>
                   </CardContent>
                 </Card>
               </Link>
             </Grid>
             <Grid item lg={3}>
-              <Link to="/quickSort">
-                <Card maxWidth="5rem">
+              <Link to="/quickSort" style={{textDecoration:'none'}}>
+                <Card variant="outlined" maxWidth="5rem">
                   <CardContent>
-                    <Typography variant="h3" sx={{ fontWeight: "600" }}>
+                    <Typography variant="h3" 
+                     display="flex"
+                     justifyContent="center"
+                     alignItems="center" 
+                     textAlign='center'
+                     mb='0.5rem' sx={{ fontWeight: "500" }}>
                       Quick Sort
                     </Typography>
-                    <Typography variant="h6">Quick Sort</Typography>
+                    <Typography variant="h6"
+                     display="flex"
+                     justifyContent="center"
+                     alignItems="center">Quick Sort</Typography>
                   </CardContent>
                 </Card>
               </Link>
             </Grid>
             <Grid item lg={3}>
-              <Link to="/selectionSort">
-                <Card variant="outlined" maxWidth="5rem">
+              <Link to="/selectionSort" style={{textDecoration:'none'}}>
+                <Card variant="outlined" maxWidth="7rem">
                   <CardContent
                     display="flex"
                     flexDirection="column"
                     justifyContent="center"
                     alignItems="center"
                   >
-                    <Typography sx={{ fontWeight: "600" }} variant="h3">
+                    <Typography sx={{ fontWeight: "500" }} 
+                     variant="h3"
+                     display="flex"
+                     justifyContent="center"
+                     alignItems="center"
+                     textAlign='center'
+                     mb='0.5rem'>
                       Selection Sort
                     </Typography>
-                    <Typography variant="h6">Selection Sort</Typography>
+                    <Typography variant="h6"  display="flex"
+                      justifyContent="center"
+                      alignItems="center">Selection Sort</Typography>
                   </CardContent>
                 </Card>
               </Link>
             </Grid>
             <Grid item lg={3}>
-              <Link to="/mergeSort">
+              <Link to="/mergeSort" style={{textDecoration:'none'}}>
                 <Card variant="outlined" maxWidth="5rem">
                   <CardContent
                     display="flex"
@@ -82,10 +114,16 @@ const Home = () => {
                     justifyContent="center"
                     alignItems="center"
                   >
-                    <Typography sx={{ fontWeight: "600" }} variant="h3">
+                    <Typography sx={{ fontWeight: "500" }} variant="h3"  display="flex"
+                      justifyContent="center"
+                      alignItems="center"
+                      textAlign='center'
+                     mb='0.5rem'>
                       Merge Sort
                     </Typography>
-                    <Typography variant="h6">Merge Sort</Typography>
+                    <Typography variant="h6"  display="flex"
+                      justifyContent="center"
+                      alignItems="center">Merge Sort</Typography>
                   </CardContent>
                 </Card>
               </Link>
@@ -97,33 +135,47 @@ const Home = () => {
           <Box>
             <Typography variant="h5">Basic Data Structures</Typography>
           </Box>
-          <Grid container spacing={2} mt="0.3rem">
+          <Grid container spacing={2} mt="0.3rem" display='flex' alignItems='center' justifyContent='center'>
             <Grid item lg={3}>
-              <Link to="/array">
-                <Card variant="outlined" maxWidth="5rem">
+              <Link to="/array" display='flex' alignItems='center' justifyContent='center' style={{textDecoration:'none'}}>
+                <Card variant="outlined" maxWidth="5rem" display='flex' alignItems='center' justifyContent='center'>
                   <CardContent
                     display="flex"
                     flexDirection="column"
                     justifyContent="center"
                     alignItems="center"
                   >
+                    <Box mb='0.5rem' display="flex"
+                      justifyContent="center"
+                      alignItems="center">
                     <CardMedia
                       sx={{ height: "100px", width: "100px" }}
                       component="img"
-                      height="100"
-                      Width="100"
+                      height="100px"
+                      Width="100px"
                       image={array}
                       alt="Array"
+                     
                     />
-                    <Typography variant="h6">Array</Typography>
+                    </Box>
+                    <Typography variant="h6"
+                      display="flex"
+                      justifyContent="center"
+                      alignItems="center"
+                    >
+                      Array
+                      </Typography>
                   </CardContent>
                 </Card>
               </Link>
             </Grid>
             <Grid item lg={3}>
-              <Link to="/linkedList">
-                <Card maxWidth="5rem">
+              <Link to="/linkedList" style={{textDecoration:'none'}}>
+                <Card variant="outlined" maxWidth="5rem">
                   <CardContent>
+                  <Box mb='0.5rem' display="flex"
+                      justifyContent="center"
+                      alignItems="center">
                     <CardMedia
                       sx={{ height: "100px", width: "100px" }}
                       component="img"
@@ -132,15 +184,26 @@ const Home = () => {
                       image={list}
                       alt="Linked-List"
                     />
-                    <Typography variant="h6">LinkList</Typography>
+                    </Box>
+                    <Typography 
+                    variant="h6"
+                    display="flex"
+                    justifyContent="center"
+                    alignItems="center"
+                    >
+                      LinkList
+                      </Typography>
                   </CardContent>
                 </Card>
               </Link>
             </Grid>
             <Grid item lg={3}>
-              <Link to="/stack">
-                <Card maxWidth="5rem">
+              <Link to="/stack" style={{textDecoration:'none'}}>
+                <Card variant="outlined" maxWidth="5rem">
                   <CardContent>
+                  <Box mb='0.5rem' display="flex"
+                      justifyContent="center"
+                      alignItems="center">
                     <CardMedia
                       sx={{ height: "100px", width: "100px" }}
                       component="img"
@@ -149,15 +212,22 @@ const Home = () => {
                       image={stack}
                       alt="Stack"
                     />
-                    <Typography variant="h6">Stack</Typography>
+                    </Box>
+                    <Typography variant="h6"
+                     display="flex"
+                     justifyContent="center"
+                     alignItems="center">Stack</Typography>
                   </CardContent>
                 </Card>
               </Link>
             </Grid>
             <Grid item lg={3}>
-              <Link to="/queue">
-                <Card maxWidth="5rem">
+              <Link to="/queue" style={{textDecoration:'none'}}>
+                <Card variant="outlined" maxWidth="5rem">
                   <CardContent>
+                  <Box mb='0.5rem' display="flex"
+                      justifyContent="center"
+                      alignItems="center">
                     <CardMedia
                       sx={{ height: "100px", width: "100px" }}
                       component="img"
@@ -166,7 +236,11 @@ const Home = () => {
                       image={queue}
                       alt="Queue"
                     />
-                    <Typography variant="h6">Queue</Typography>
+                    </Box>
+                    <Typography variant="h6"
+                     display="flex"
+                     justifyContent="center"
+                     alignItems="center">Queue</Typography>
                   </CardContent>
                 </Card>
               </Link>
@@ -174,13 +248,13 @@ const Home = () => {
           </Grid>
         </Box>
 
-        <Box mt="1rem">
+        <Box mt='1.5rem'>
           <Box>
             <Typography variant="h5">Searching Techniques</Typography>
           </Box>
-          <Grid container spacing={2} mt="0.1rem">
+          <Grid container spacing={2} mt="0.1rem" display='flex' alignItems='center' justifyContent='center'>
             <Grid item lg={3}>
-              <Link to="/linearSearch">
+              <Link to="/linearSearch" style={{textDecoration:'none'}}>
                 <Card variant="outlined" maxWidth="5rem">
                   <CardContent
                     display="flex"
@@ -188,30 +262,46 @@ const Home = () => {
                     justifyContent="center"
                     alignItems="center"
                   >
-                    <Typography variant="h3" sx={{ fontWeight: "600" }}>
+                    <Typography variant="h3"
+                     display="flex"
+                     justifyContent="center"
+                     alignItems="center" textAlign='center'
+                     mb='0.5rem' sx={{ fontWeight: "500" }}>
                       Linear Search
                     </Typography>
-                    <Typography variant="h6">Linear Search</Typography>
+                    <Typography variant="h6"
+                     display="flex"
+                     justifyContent="center"
+                     alignItems="center">Linear Search</Typography>
+                    
                   </CardContent>
+                
                 </Card>
               </Link>
             </Grid>
             <Grid item lg={3}>
-              <Link to="/BinarySearch">
-                <Card maxWidth="5rem">
+              <Link to="/BinarySearch" style={{textDecoration:'none'}}>
+                <Card variant="outlined" maxWidth="5rem">
                   <CardContent>
-                    <Typography variant="h3" sx={{ fontWeight: "600" }}>
+                    <Typography variant="h3" display="flex"
+                     justifyContent="center"
+                     alignItems="center" textAlign='center'
+                     mb='0.5rem' sx={{ fontWeight: "500" }}>
                       Binary Search
                     </Typography>
-                    <Typography variant="h6">Binary Search</Typography>
+                    <Typography variant="h6"
+                     display="flex"
+                     justifyContent="center"
+                     alignItems="center">Binary Search</Typography>
                   </CardContent>
                 </Card>
               </Link>
             </Grid>
           </Grid>
         </Box>
-      </Box>
-    </Container>
+      {/* </Box> */}
+      </Grid>
+    </Grid>
   );
 };
 export default Home;
