@@ -25,9 +25,8 @@ const SelectionSort = () => {
   };
 
   const selectionSort = async () => {
-    const arrayCopy = [...array];
-
-    for (let i = 0; i < arrayCopy.length - 1; i++) {
+  
+    for (let i = 0; i < array.length - 1; i++) {
       let minIndex = i;
 
       // Highlight the current minimum element
@@ -36,7 +35,7 @@ const SelectionSort = () => {
         duration: animationSpeed / 1000,
       });
 
-      for (let j = i + 1; j < arrayCopy.length; j++) {
+      for (let j = i + 1; j < array.length; j++) {
         // Highlight elements being compared
         gsap.to(arrayRef.current.children[j], {
           backgroundColor: "blue",
@@ -46,9 +45,11 @@ const SelectionSort = () => {
         await new Promise((resolve) => setTimeout(resolve, animationSpeed));
 
         // If found a new minimum, update minIndex
-        if (arrayCopy[j] < arrayCopy[minIndex]) {
+        if (array[j] < array[minIndex]) {
           minIndex = j;
         }
+
+        setArray([...array]);
 
         // Reset background color
         gsap.to(arrayRef.current.children[j], {
@@ -58,28 +59,30 @@ const SelectionSort = () => {
       }
 
       // Swap the found minimum element with the first element
-      const temp = arrayCopy[i];
-      arrayCopy[i] = arrayCopy[minIndex];
-      arrayCopy[minIndex] = temp;
+      const temp = array[i];
+      array[i] = array[minIndex];
+      array[minIndex] = temp;
 
       // Animate swap
       gsap.to(arrayRef.current.children[i], {
-        height: `${arrayCopy[i] * 10}px`,
+        height: `${array[i] * 10}px`,
         backgroundColor: "green",
         duration: animationSpeed / 1000,
       });
 
       gsap.to(arrayRef.current.children[minIndex], {
-        height: `${arrayCopy[minIndex] * 10}px`,
-        backgroundColor: "green",
+        height: `${array[minIndex] * 10}px`,
+        backgroundColor: "orange",
         duration: animationSpeed / 1000,
       });
 
       await new Promise((resolve) => setTimeout(resolve, animationSpeed));
 
+      setArray([...array]);
+
       // Reset background color
       gsap.to(arrayRef.current.children[i], {
-        backgroundColor: "lightblue",
+        backgroundColor: "green",
         duration: animationSpeed / 1000,
       });
 
@@ -90,10 +93,12 @@ const SelectionSort = () => {
     }
 
     // Set the last element in its final sorted position
-    gsap.to(arrayRef.current.children[arrayCopy.length - 1], {
+    gsap.to(arrayRef.current.children[array.length - 1], {
       backgroundColor: "green",
       duration: animationSpeed / 1000,
     });
+
+    setArray([...array]);
   };
 
   const resetColors = () => {
@@ -152,7 +157,7 @@ const SelectionSort = () => {
           </Button>
           <Box>
             <label>
-              <Typography variant="subtitle1">Animation Speed:</Typography>
+              <Typography variant="subtitle1">Animation Time:</Typography>
             </label>
           </Box>
           <Box>
@@ -216,7 +221,7 @@ const SelectionSort = () => {
                 color: "white",
               }}
             >
-              {/*  {value}   */}
+              {value}
             </Box>
           ))}
         </Box>

@@ -25,8 +25,7 @@ const MergeSort = () => {
   };
 
   const mergeSort = async () => {
-    //const arrayCopy = [...array];
-
+    
     const merge = async (start, middle, end) => {
       const leftArray = array.slice(start, middle + 1);
       const rightArray = array.slice(middle + 1, end + 1);
@@ -182,7 +181,7 @@ const MergeSort = () => {
           </Button>
           <Box>
             <label>
-              <Typography variant="subtitle1">Animation Speed:</Typography>
+              <Typography variant="subtitle1">Animation Time:</Typography>
             </label>
           </Box>
           <Box>

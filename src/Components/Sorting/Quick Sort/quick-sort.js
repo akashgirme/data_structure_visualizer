@@ -183,7 +183,7 @@ const QuickSort = () => {
           </Button>
           <Box>
             <label>
-              <Typography variant="subtitle1">Animation Speed:</Typography>
+              <Typography variant="subtitle1">Animation Time:</Typography>
             </label>
           </Box>
           <Box>
