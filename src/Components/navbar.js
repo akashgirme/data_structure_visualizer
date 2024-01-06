@@ -30,7 +30,7 @@ function navbar() {
           <div
             style={{ display: "flex", width: "100%", justifyContent: "center" }}
           >
-            <Typography variant="h6" sx={{fontWeight:'600', letterSpacing:'2px'}}>DATA STRUCTURE VISULIAZATION</Typography>
+            <Typography variant="h6" sx={{fontWeight:'600', letterSpacing:'2px'}}>DATA STRUCTURE VISUALIZATION</Typography>
           </div>
         </div>
       </nav>
