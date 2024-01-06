@@ -10,8 +10,8 @@ const Theme = createTheme({
       fontSize:108,
       letterSpacing:20,
 
-      '@media (min-width:768px) and (max-width:1024px)': {
-        fontSize:76,
+      '@media (min-width:960px) and (max-width:1280px)': {
+        fontSize:96,
         letterSpacing:15,
       },
 
