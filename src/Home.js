@@ -21,7 +21,7 @@ const Home = () => {
         alignItems: "center",
       }}
     >
-      <Grid item sm={12} md={12} lg={11} xl={11} display='flex' flexDirection='column' justifyContent='center'>
+      <Grid item sm={11} md={11} lg={11} xl={11} display='flex' flexDirection='column' justifyContent='center'>
         <Box  m='2rem' display='flex' flexDirection='column'
         alignItems='center' justifyContent='center'><Typography variant='h1' sx={{fontWeight:'700' }}
        

@@ -10,13 +10,24 @@ const Theme = createTheme({
       fontSize:108,
       letterSpacing:20,
 
-      '@media (min-width:720px) and (max-width:1024px)': {
-        fontSize:84,
-        letterSpacing:15,
+      '@media (max-width:600px)': {
+        fontSize: 32,
+        letterSpacing:1,
+      },
+
+      '@media (min-width:600px) and (max-width:768px)': {
+        fontSize:60,
+        letterSpacing:6,
       },
 
 
-      '@media (min-width:1024px) and (max-width:1280px)': {
+      '@media (min-width:769px) and (max-width:1100px)': {
+        fontSize:76,
+        letterSpacing:10,
+      },
+
+
+      '@media (min-width:1110px) and (max-width:1280px)': {
         fontSize:96,
         letterSpacing:15,
       },
@@ -24,13 +35,6 @@ const Theme = createTheme({
       '@media (min-width:1280px) and (max-width:1440px)': {
         fontSize:102,
         letterSpacing:15,
-      },
-
-
-
-      '@media (max-width:600px)': {
-        fontSize: 32,
-        letterSpacing:1,
       },
 
     },
