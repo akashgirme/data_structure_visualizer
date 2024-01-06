@@ -25,11 +25,11 @@ const MergeSort = () => {
   };
 
   const mergeSort = async () => {
-    const arrayCopy = [...array];
+    //const arrayCopy = [...array];
 
     const merge = async (start, middle, end) => {
-      const leftArray = arrayCopy.slice(start, middle + 1);
-      const rightArray = arrayCopy.slice(middle + 1, end + 1);
+      const leftArray = array.slice(start, middle + 1);
+      const rightArray = array.slice(middle + 1, end + 1);
 
       let i = 0,
         j = 0,
@@ -51,16 +51,16 @@ const MergeSort = () => {
 
         // Compare and merge
         if (leftArray[i] <= rightArray[j]) {
-          arrayCopy[k] = leftArray[i];
+          array[k] = leftArray[i];
           i++;
         } else {
-          arrayCopy[k] = rightArray[j];
+          array[k] = rightArray[j];
           j++;
         }
 
         // Animate merge
         gsap.to(arrayRef.current.children[k], {
-          height: `${arrayCopy[k] * 10}px`,
+          height: `${array[k] * 10}px`,
           backgroundColor: "green",
           duration: animationSpeed / 1000,
         });
@@ -70,11 +70,11 @@ const MergeSort = () => {
 
       // Fill in remaining elements from leftArray
       while (i < leftArray.length) {
-        arrayCopy[k] = leftArray[i];
+        array[k] = leftArray[i];
 
         // Animate merge
         gsap.to(arrayRef.current.children[k], {
-          height: `${arrayCopy[k] * 10}px`,
+          height: `${array[k] * 10}px`,
           backgroundColor: "green",
           duration: animationSpeed / 1000,
         });
@@ -85,11 +85,11 @@ const MergeSort = () => {
 
       // Fill in remaining elements from rightArray
       while (j < rightArray.length) {
-        arrayCopy[k] = rightArray[j];
+        array[k] = rightArray[j];
 
         // Animate merge
         gsap.to(arrayRef.current.children[k], {
-          height: `${arrayCopy[k] * 10}px`,
+          height: `${array[k] * 10}px`,
           backgroundColor: "green",
           duration: animationSpeed / 1000,
         });
@@ -97,6 +97,8 @@ const MergeSort = () => {
         j++;
         k++;
       }
+
+      setArray([...array]);
     };
 
     const mergeSortHelper = async (start, end) => {
@@ -113,10 +115,10 @@ const MergeSort = () => {
     };
 
     // Start the merge sort algorithm
-    await mergeSortHelper(0, arrayCopy.length - 1);
+    await mergeSortHelper(0, array.length - 1);
 
     // Set all elements in their final sorted position
-    for (let i = 0; i < arrayCopy.length; i++) {
+    for (let i = 0; i < array.length; i++) {
       gsap.to(arrayRef.current.children[i], {
         backgroundColor: "green",
         duration: animationSpeed / 1000,
@@ -244,7 +246,7 @@ const MergeSort = () => {
                 color: "white",
               }}
             >
-              {/*  {value}   */}
+              {value}
             </Box>
           ))}
         </Box>

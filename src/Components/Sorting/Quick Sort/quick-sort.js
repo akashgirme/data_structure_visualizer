@@ -32,6 +32,7 @@ const QuickSort = () => {
       await quickSort(arr, low, pivotIndex - 1);
       await quickSort(arr, pivotIndex + 1, high);
     }
+    
   };
 
   const partition = async (arr, low, high) => {
@@ -51,6 +52,8 @@ const QuickSort = () => {
       });
 
       await new Promise((resolve) => setTimeout(resolve, animationSpeed));
+
+      setArray([...array]);
 
       if (arr[j] < pivot) {
         i++;
@@ -105,18 +108,17 @@ const QuickSort = () => {
 
     await new Promise((resolve) => setTimeout(resolve, animationSpeed));
 
+    setArray([...array]);
+
     // Reset background color
     gsap.to(arrayRef.current.children[high], {
       backgroundColor: "lightblue",
       duration: animationSpeed / 1000,
     });
 
-    
     setArray([...arr]);
 
     return i + 1;
-
-
   };
 
   const sort = async () => {
@@ -127,7 +129,7 @@ const QuickSort = () => {
   const resetColors = () => {
     gsap.to(arrayRef.current.children, {
       backgroundColor: "lightblue",
-      duration: animationSpeed / 1000,
+      duration: animationSpeed / 0,
     });
     generateRandomArray();
   };
